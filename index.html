@@ -103,10 +103,11 @@
     min = Math.floor( (inputsecond % secondih) / secinmin);
     sec = inputsecond - (min * secinmin) - (h * secondih);
 
+    var result = h + " or" + (h === 1 ? "a" : "e") + ", " + min + " minut" + (min === 1 ? "o" : "i") + ", " + sec + " second" + (sec === 1 ? "o" : "i")
 
 
-    var result = h + " Ore "  + min + " Minuti e "  + sec + " Seccondi ";
-    // console.log(result);
+   // var result = h + " Ore "  + min + " Minuti e "  + sec + " Seccondi ";
+    console.log(result);
 
 </script>
 </body>
