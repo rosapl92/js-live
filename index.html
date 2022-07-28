@@ -18,21 +18,21 @@
 
     var a, b, c, d, e;
 
- a = 1;
- b = 2;
- c = 3;
- d = 4;
- e = 5;
+    a = 1;
+    b = 2;
+    c = 3;
+    d = 4;
+    e = 5;
     var risultatoSomma = a + b + c + d + e;
-    var risultatoMedia = (a + b + c + d + e ) / 5 ;
+    var risultatoMedia = (a + b + c + d + e) / 5;
 
- var risultatoEsercizio1 = "Dati i 5 valori:\na=" + a + ", b=" + b + ", c=" + c + ", d=" + d + ", e=" + e + " "  + "\n\n"
-    + " La somma è " + risultatoSomma  + "\n"
- + " Il tipo della somma è " + typeof risultatoSomma  + "\n"
- + " La media è " + risultatoMedia  + "\n"
- + "Il tipo della media è " + typeof risultatoMedia;
+    var risultatoEsercizio1 = "Dati i 5 valori:\na=" + a + ", b=" + b + ", c=" + c + ", d=" + d + ", e=" + e + " " + "\n\n"
+        + " La somma è " + risultatoSomma + "\n"
+        + " Il tipo della somma è " + typeof risultatoSomma + "\n"
+        + " La media è " + risultatoMedia + "\n"
+        + "Il tipo della media è " + typeof risultatoMedia;
 
- // + "\n" ed il + ad inizio riga serve ad andare a capo visto che per js ogni riga è una riga di codice
+    // + "\n" ed il + ad inizio riga serve ad andare a capo visto che per js ogni riga è una riga di codice
 
 </script>
 <script>
@@ -55,7 +55,7 @@
     var annialsecolo = (secolo - eta);
 
     //console.log(" Età " + eta);
-   // console.log(" Anni che mancano al secolo " + annialsecolo);
+    // console.log(" Anni che mancano al secolo " + annialsecolo);
 
 </script>
 <script>
@@ -75,10 +75,10 @@
     var gattiTotali, filegatti;
     gattiTotali = 44;
     filegatti = 6
-    var restogatti =  gattiTotali % filegatti;
+    var restogatti = gattiTotali % filegatti;
 
-    var gattiperfila = Math.ceil( gattiTotali / filegatti );
-    var gattiultimafila = ( filegatti - restogatti );
+    var gattiperfila = Math.ceil(gattiTotali / filegatti);
+    var gattiultimafila = (filegatti - restogatti);
 
     //console.log(" Gatti per fila " + gattiperfila);
     //console.log("Gatti in ultima fila " + gattiultimafila);
@@ -95,20 +95,20 @@
      */
 
 
-  //  seconditotali = 12560;
+    //  seconditotali = 12560;
     inputsecond = 12560;
     var secondih = 60 * 60;
     var secinmin = 60
 
-    h = Math.floor( inputsecond / secondih );
-    min = Math.floor( (inputsecond % secondih) / secinmin);
+    h = Math.floor(inputsecond / secondih);
+    min = Math.floor((inputsecond % secondih) / secinmin);
     sec = inputsecond - (min * secinmin) - (h * secondih);
 
     var result = h + " or" + (h === 1 ? "a" : "e") + ", " + min + " minut" + (min === 1 ? "o" : "i") + ", " + sec + " second" + (sec === 1 ? "o" : "i");
-// regola del se
+    // regola del se
 
-   // var result = h + " Ore "  + min + " Minuti e "  + sec + " Seccondi ";
-   // console.log(result);
+    // var result = h + " Ore "  + min + " Minuti e "  + sec + " Seccondi ";
+    // console.log(result);
 
 </script>
 <!-- Esercizi -->
@@ -117,11 +117,19 @@
     // if (nome) {console.log("Buonasera " + nome)} else {console.log("Buona sera User")};
 </script>
 <script>
-/*   var color = "red";
-    if (color === "red") {message = "Stop"} else if(color === "yellow") {message = "Alert"} else if (color === "green") {message = "go"} else { throw Error ("Colore non gestito")};
+    var color = "red";
+    if (color === "red") {
+        message = "Stop"
+    } else if (color === "yellow" || color === "orange") {
+        message = "Alert"
+    } else if (color === "green") {
+        message = "go"
+    } else {
+        throw Error("Colore non gestito")
+    }
+    ;
     console.log(message);
-
- */
+// i simboli || vogliono dire oppure e se ne possono mettere uno o più
 </script>
 </body>
 </html>
