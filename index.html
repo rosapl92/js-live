@@ -142,10 +142,19 @@
 <script>
 
     var numero = 0;
-    while (numero < 10){
+   /* while (numero < 10){
         console.log("Sono un whiting");
         numero++;
     }
+        */
+// si preferisce il for al while perché è più corto
+    for (var i =0; i <10; i ++){
+        console.log("Sono un whiting");
+    }
+
+    setTimeout(() => {console.log("this is the first message")}, 5000);
+
+   // setInterval(() => {console.log("esclamazione")}, 1000)
 
 </script>
 
