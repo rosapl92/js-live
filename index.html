@@ -117,7 +117,7 @@
     // if (nome) {console.log("Buonasera " + nome)} else {console.log("Buona sera User")};
 </script>
 <script>
-  /* var color = "red";
+ /* var color = "red";
    switch (color) {
        case "red":
            message = "Stop"
@@ -141,7 +141,7 @@
 </script>
 <script>
 
-    var numero = 0;
+    //var numero = 0;
    /* while (numero < 10){
         console.log("Sono un whiting");
         numero++;
@@ -254,7 +254,7 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
 
     var v = "26";
 
-    if (v >= "0" && v <= "18") {
+   /* if (v >= "0" && v <= "18") {
         message = "insufficiente"
     } else if (v >= "19" && v <= "21") {
         message = "sufficiente"
@@ -269,6 +269,32 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
     } else {
         throw Error("voto non valido")
     }
+
+    */
+
+    switch (v) {
+        case v >= "0" && v <= "18":
+            message = "insufficiente"
+            break;
+        case v >= "19" && v <= "21":
+        case "sufficiente":
+            break;
+        case v >= "22" && v <= "24":
+            message = "buono"
+            break;
+        case v >= "25" && v <= "27":
+            message = "distinto"
+            break;
+        case v >= "28" && v <= "29":
+            message = "ottimo"
+            break;
+        case v >= "30":
+            message = "eccellente"
+            break;
+        default:
+            throw Error("Colore non gestito")
+    }
+
 
     risultatovoto = message
     console.log(risultatovoto)
