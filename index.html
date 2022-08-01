@@ -16,7 +16,7 @@
     output: 15 3
      */
 
-    var a, b, c, d, e;
+   /* var a, b, c, d, e;
 
     a = 1;
     b = 2;
@@ -32,6 +32,8 @@
         + " La media è " + risultatoMedia + "\n"
         + "Il tipo della media è " + typeof risultatoMedia;
 
+    */
+
     // + "\n" ed il + ad inizio riga serve ad andare a capo visto che per js ogni riga è una riga di codice
 
 </script>
@@ -44,7 +46,7 @@
     - quanti anni sono necessari per raggiungere i 100 anni
     restituisca in output entrambi i risultati
      */
-
+/*
     var annonascita, annocorrente, secolo;
 
     annonascita = 1992;
@@ -53,6 +55,8 @@
 
     var eta = (annocorrente - annonascita);
     var annialsecolo = (secolo - eta);
+
+ */
 
     //console.log(" Età " + eta);
     // console.log(" Anni che mancano al secolo " + annialsecolo);
@@ -72,13 +76,15 @@
     numero gatti = 44  file di gatti = 6
      */
 
-    var gattiTotali, filegatti;
+   /* var gattiTotali, filegatti;
     gattiTotali = 44;
     filegatti = 6
     var restogatti = gattiTotali % filegatti;
 
     var gattiperfila = Math.ceil(gattiTotali / filegatti);
     var gattiultimafila = (filegatti - restogatti);
+
+    */
 
     //console.log(" Gatti per fila " + gattiperfila);
     //console.log("Gatti in ultima fila " + gattiultimafila);
@@ -96,7 +102,7 @@
 
 
     //  seconditotali = 12560;
-    inputsecond = 12560;
+  /*  inputsecond = 12560;
     var secondih = 60 * 60;
     var secinmin = 60
 
@@ -105,6 +111,8 @@
     sec = inputsecond - (min * secinmin) - (h * secondih);
 
     var result = h + " or" + (h === 1 ? "a" : "e") + ", " + min + " minut" + (min === 1 ? "o" : "i") + ", " + sec + " second" + (sec === 1 ? "o" : "i");
+
+   */
     // regola del se
 
     // var result = h + " Ore "  + min + " Minuti e "  + sec + " Seccondi ";
@@ -206,8 +214,8 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
      putput: 3 cifre
      */
 
-    numero = 9;
-   // ncifra = 1;
+   /* numero = 9;
+
 
     if (numero >= 0 && numero <= 10000) {
         if (numero >= 1 && numero <= "9") {
@@ -227,6 +235,7 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
     risultatocifra =  "" + numero + " contiene " + ncifra + " cifre "
     console.log(risultatocifra)
 
+    */
 
 </script>
 <script>
@@ -252,9 +261,9 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
     in questo caso gestire anche il caso in cui il voto inserito sia non valido.
     */
 
-    var v = "26";
+    /* var v = "26";
 
-   /* if (v >= "0" && v <= "18") {
+    if (v >= "0" && v <= "18") {
         message = "insufficiente"
     } else if (v >= "19" && v <= "21") {
         message = "sufficiente"
@@ -270,8 +279,9 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
         throw Error("voto non valido")
     }
 
-    */
+     */
 
+  /*  var v = "26"
     switch (v) {
         case v >= "0" && v <= "18":
             message = "insufficiente"
@@ -292,12 +302,58 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
             message = "eccellente"
             break;
         default:
-            throw Error("Colore non gestito")
+            throw Error("voto non valido")
+    }
+*/
+
+ //   risultatovoto = message
+ //   console.log(risultatovoto)
+
+
+
+</script>
+<script>
+    // come creare un object
+   /* var obj1 = {
+        Name: "test"
     }
 
+    */
 
-    risultatovoto = message
-    console.log(risultatovoto)
+    var animal = {
+        Respira: function () {
+            //...
+        },
+        Datanadcitaan: new Date ()
+    }
+    var felini ={
+        Type: "mammifero",
+        corre: function () {
+            //...
+        },
+        assalti: function () {
+            //...
+        },
+    }
+  /*  var lion = {
+        Type: "mammifero",
+        corre: function () {
+            //...
+        },
+        assalti: function () {
+            //...
+        },
+
+    }
+*/
+// come far ereditare ad un altro object le proprietà di un altro object
+
+    var lion = Object.create(animal);
+    lion.setPrototypeOf(felini);
+
+
+    console.log(animal)
+    console.log(lion)
 
 </script>
 
