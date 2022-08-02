@@ -335,25 +335,48 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
             //...
         },
     }
-  /*  var lion = {
-        Type: "mammifero",
-        corre: function () {
+    //come far ereditare funzionalità dopo che l' object è gia stato creato
+    //in questo modo lui eredita (prima no)
+
+    var lion ={
+        ruggisce: function () {
             //...
         },
-        assalti: function () {
+        carnivoro: function () {
             //...
         },
+        Color: "orange",
+        get accessorColor() { return this.Color},
+        set accessorColor(orange) {this.Color = orange},
+    };
 
-    }
-*/
-// come far ereditare ad un altro object le proprietà di un altro object
-
-    var lion = Object.create(animal);
-    lion.setPrototypeOf(felini);
-
-
-    console.log(animal)
     console.log(lion)
+    
+    function addFeatures() {
+        Object.setPrototypeOf(felini, animal)
+        Object.setPrototypeOf(lion, felini)
+        console.log(lion)
+    }
+
+// come far ereditare ad un altro object le proprietà di un altro object
+    // ed aggiungere altri object con ulteriori proprietà
+    // (ha valore anche l'ordine in cui si mettono i nomi)
+
+   /* var lion = Object.create(animal);
+    Object.setPrototypeOf(felini,animal);
+   Object.setPrototypeOf(lion,felini);
+   lion.ruggisce= function () {
+       //...
+   };
+   lion.carnivoro= function () {
+       //...
+   };
+
+    */
+
+
+ //   console.log(animal)
+ //   console.log(lion)
 
 </script>
 
