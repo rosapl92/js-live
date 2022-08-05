@@ -312,6 +312,7 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
 
 
 </script>
+<!-- Esercizi lezione 24 -->
 <script>
     // come creare un object
    /* var obj1 = {
@@ -319,7 +320,7 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
     }
 
     */
-
+/*
     var animal = {
         Respira: function () {
             //...
@@ -335,10 +336,12 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
             //...
         },
     }
+
+ */
     //come far ereditare funzionalità dopo che l' object è gia stato creato
     //in questo modo lui eredita (prima no)
 
-    var lion ={
+  /*  var lion ={
         ruggisce: function () {
             //...
         },
@@ -357,6 +360,8 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
         Object.setPrototypeOf(lion, felini)
         console.log(lion)
     }
+
+   */
 
 // come far ereditare ad un altro object le proprietà di un altro object
     // ed aggiungere altri object con ulteriori proprietà
@@ -377,6 +382,157 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
 
  //   console.log(animal)
  //   console.log(lion)
+
+</script>
+<!-- Esercizi lezione 25 -->
+<script>
+    /*
+    come si crea um object con function
+     */
+    /*
+    function car(name, marca) {
+        this.name = name;
+        this.marca = marca;
+        this.toString = function (){
+            return this.name + ", " + this.marca ;
+        }
+        
+    };
+    car.prototype.annomat = undefined;
+    
+    var car1 = {name: "Aygo", marca: "Toyota" };
+    var car2 = {name: "GrandePunto", marca: "FIAT"};
+    var car3 = new car("GranVitara", "Suzuki");
+    car3.annomat = 2016;
+
+     */
+
+</script>
+<script>
+    /*
+    - Scrivere una 'object costructor function' o una 'classe' che permetta
+    di gestire una carta da gioco: Card
+    - Questa dovra possedere le properties:
+     a. faccia ( a cui potrà essere assegnato un valore compreso tra: asso (1), 2, 3,...,10)
+     b. seme ( a cui potrà essere assegnato un valore compreso tra (1 cuori, 2 fiori, 3 picche, 4 quadri))
+     - Creare poi un altro oggetto CardDeck che abbia un metodo 'shuffle (mescolare)' capace di
+     instanziare una carta 'con valori random':
+     a. suggerimento: utilizzare il metodo Math.round(Math.random() * max)
+     */
+/*
+    class Card {
+        constructor(faccia, seme) {
+
+            this.faccia = getFaccia(faccia);
+            this.seme = getseme(seme);
+
+           function getFaccia(faccia){
+
+ */
+
+
+              /* switch (faccia) {
+                   case 0:
+                       return "asso";
+                   case 1:
+                       return "2";
+                   case 2:
+                       return "3";
+                   case 3:
+                       return "4";
+                   case 4:
+                       return "5";
+                   case 5:
+                       return "6";
+                   case 6:
+                       return "7";
+                   case 7:
+                       return "8";
+                   case 8:
+                       return "9";
+                   case 9:
+                       return "Re";
+               }
+               throw new Error("Carta non valida");
+    OPPURE
+
+               switch (faccia) {
+                   case 0:
+                       return "asso";
+                   case 1:
+                   case 2:
+                   case 3:
+                   case 4:
+                   case 5:
+                   case 6:
+                   case 7:
+                   case 8:
+                       return (faccia + 1).toString();
+                   case 9:
+                       return "Re";
+               }
+               throw new Error("Carta non valida");
+    OPPURE
+               */
+ /*              if ((faccia < 0 || faccia > 9) || Number.isInteger(faccia) === false)
+                   throw new Error("Carta non valida");
+
+               switch (faccia) {
+                   case 0:
+                       return "asso";
+                   case 9:
+                       return "Re";
+                   default:
+                       return (faccia + 1).toString();
+               }
+
+
+
+            }
+            function getseme(seme){
+                if ((seme< 0 || seme > 3) || Number.isInteger(seme) === false)
+                    throw new Error("Seme non valido");
+
+                switch (seme) {
+                    case 0:
+                        return "cuori";
+                    case 1:
+                        return "fiori";
+                    case 2:
+                        return "picche";
+                    case 3:
+                        return "quadri"
+                }
+                throw new Error("seme non trovato");
+            }
+
+
+        }
+    }
+
+
+  */
+/*
+    class CardDeck {
+        constructor() {
+        }
+
+        shuffle() {
+                    var faccia = Math.round(Math.random() * 9);
+                    var seme = Math.round(Math.random() * 3);
+                    return new Card(faccia, seme);
+                }
+    }
+
+    var cardDeck = new CardDeck();
+    console.log(cardDeck)
+    console.log(cardDeck.shuffle())
+
+ */
+
+</script>
+<!-- Esercizi lezione 26 -->
+<script>
 
 </script>
 
