@@ -431,7 +431,7 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
  */
 
 
-              /* switch (faccia) {
+            /*   switch (faccia) {
                    case 0:
                        return "asso";
                    case 1:
@@ -532,6 +532,99 @@ var risultatogradi = "giornata più calda " + caldo + "; giornata più fredda " 
 
 </script>
 <!-- Esercizi lezione 26 -->
+<script>
+ /*
+ Operazioni tra array.
+ Scrivi un programma che dati:
+ - 2 array di 10 elementi interi casuali compresi tra 1 e 10;
+ - il tipo di operazione aritmetica da effettuare, una delle seguenti:
+ addizione
+ sottrazione
+ moltiplicazione
+ divisione
+ Esegui il calcolo tra ogni elemento dei due array,
+ salvando ciascun risultato in un terzo array di appoggio
+  Esempio:
+  a = [3, 7, 2, 5, 8, 1, 2, 5, 6, 4], b = [9, 3, 1, 4, 7, 6, 5, 10, 1, 5],
+  operazione: addizione
+  risultato: [12, 10, 3, 9, 15, 7, 7, 15, 9]
+- map
+- forEach
+  */
+/*
+ var a = [3, 7, 2, 5, 8, 1, 2, 5, 6, 4]
+ var b = [9, 3, 1, 4, 7, 6, 5, 10, 1, 5]
+ console.log( a, b)
+
+ */
+/*
+ function operazionitraarray(array1, array2, operazione) {
+
+         var array3 = new Array();
+        for (var i = 0; i < array1.length; i ++){
+             array3[i] = array1[i] + array2[i]
+         }
+
+     // il for fa fare a tutti gli elementi una funzione senza ripetere.
+
+     if (array1.length === array2.length) {
+         switch (operazione) {
+             case "addizione":
+                 for (var i = 0; i < array1.length; i++) {
+                     array3[i] = array1[i] + array2[i];
+                 }
+                 break;
+             case "sottrazione":
+                 for (var i = 0; i < array1.length; i++) {
+                     array3[i] = array1[i] - array2[i];
+                 }
+                 break;
+             case "moltiplicazione":
+                 for (var i = 0; i < array1.length; i++) {
+                     array3[i] = array1[i] * array2[i];
+                 }
+                 break;
+             case "divisione":
+                 for (var i = 0; i < array1.length; i++) {
+                     array3[i] = array1[i] / array2[i];
+                 }
+                 break;
+             default:
+                 throw Error("operazione non valida");
+         }
+     }
+     return[array3];
+
+
+ */
+
+/*
+questa non funziona
+         return array1.map((value,index) => {
+             switch (operazione) {
+                 case "addizione":
+                     return value + array2[index];
+                 case "sottrazione":
+                     return value - array2[index];
+                 case "moltiplicazione":
+                     return value * array2[index];
+                 case "divisione":
+                     return value / array2[index];
+                 default:
+                     throw Error("operazione non valida");
+             }
+
+         })
+
+ */
+/*
+     }
+     var result =  operazionitraarray([3, 7, 2, 5, 8, 1, 2, 5, 6, 4], [9, 3, 1, 4, 7, 6, 5, 10, 1, 5], "addizione");
+console.log(result)
+
+ */
+</script>
+<!-- Esercizi lezione 27 -->
 <script>
 
 </script>
