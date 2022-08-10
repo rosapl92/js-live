@@ -1,0 +1,7 @@
+{
+  "name": "js-live",
+  "version": "1.0.0",
+  "dependencies": {
+    "mocha": "^10.0.0"
+  }
+}
