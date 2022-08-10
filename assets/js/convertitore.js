@@ -19,12 +19,12 @@ console.log(v1);
 
 
 function convertitorex(valueOb, unitaDaCambiare1) {
-    return v = valueOb.value;
-    return u = unitaDaCambiare1.unita;
+    const v = valueOb.value;
+    const u = unitaDaCambiare1.unita;
 
     return {
-        value: 22;
-        unita: unitaDaCambiare1;
+        value: 22,
+        unita: unitaDaCambiare1,
     }
 }
 
