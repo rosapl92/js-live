@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>esercizio DOM</title>
+</head>
+<body>
+<h1>The Extremadura Region of Western Spain</h1>
+<article id="item-1">
+    <h2>Geography Of The Region 1</h2>
+    <p>The autonomus community of Extremadura is in western Spain
+    Portuguese botrder. It borders the Spain regions ofnCastillia
+    Mache and Andalusia as well as Portugal (to the West). Cow
+    kilometers it has two provinces: Caceres in the North and East.</p>
+</article>
+<article id="item-2">
+    <h2>Geography Of The Region 2</h2>
+    <p>The autonomus community of Extremadura is in western Spain
+        Portuguese botrder. It borders the Spain regions ofnCastillia
+        Mache and Andalusia as well as Portugal (to the West). Cow
+        kilometers it has two provinces: Caceres in the North and East.</p>
+</article>
+<article id="item-3">
+    <h2>Geography Of The Region 3</h2>
+    <p>The autonomus community of Extremadura is in western Spain
+        Portuguese botrder. It borders the Spain regions ofnCastillia
+        Mache and Andalusia as well as Portugal (to the West). Cow
+        kilometers it has two provinces: Caceres in the North and East.</p>
+</article>
+<article id="item-4">
+    <h2>Geography Of The Region 4</h2>
+    <p>The autonomus community of Extremadura is in western Spain
+        Portuguese botrder. It borders the Spain regions ofnCastillia
+        Mache and Andalusia as well as Portugal (to the West). Cow
+        kilometers it has two provinces: Caceres in the North and East.</p>
+</article>
+<article id="item-5">
+    <h2>Geography Of The Region 5</h2>
+    <p>The autonomus community of Extremadura is in western Spain
+        Portuguese botrder. It borders the Spain regions ofnCastillia
+        Mache and Andalusia as well as Portugal (to the West). Cow
+        kilometers it has two provinces: Caceres in the North and East.</p>
+</article>
+
+<script>
+    function getTitlesFromArticles(list) {
+        articlesTitle = [];
+        for (let i = 0; i < list.length; i++) {
+            console.log(list.item(i).innerHTML);
+            articlesTitle.push(list.item(i).innerHTML);
+
+
+        }
+        return articlesTitle;
+    }
+
+    (function () {
+        const articlesTitle = getTitlesFromArticles(document.querySelectorAll("article > h2"));
+        const body = document.getElementsByTagName("body");
+        const elementUl =  document.createElement("ul");
+        body[0].prepend(elementUl);
+
+        for (let i = 0; i < articlesTitle.length; i++) {
+            const element = document.createElement("li");
+            elementUl.append(element);
+            /*
+            const elementA = document.createElement("a");
+            elementA.style.color = "black";
+            elementA.innerHTML = articlesTitle[i];
+            elementA[i].setAttribute("href", "#item-" +[i+1]);
+            elementA[i].setAttribute("target", "_self");
+            element.append(elementA);
+             */
+
+        }
+
+        const liList = document.getElementsByTagName("li");
+        for (let i = 0; i < liList.length; i++) {
+            const elementA = document.createElement("a");
+            elementA.style.color = "black";
+            liList[i].append(elementA);
+            elementA.innerHTML = articlesTitle[i];
+            }
+        const aList = document.getElementsByTagName("a");
+        for (let i = 0; i < aList.length; i++){
+            aList[i].setAttribute("href", "#item-" +[i+1]);
+            aList[i].setAttribute("target", "_self");
+        }
+
+// per ciascun articolo si deve creare un elemento di tipo "<li><a href="#item-1>title</a></li>"
+        // prependere gli elementi come primo figlio del tag body
+        // gli elementi <li> devono essere in un elemento <ul>
+        // nell'ultimo passo si deve creare un attributo id nell'attributo href
+    })()
+</script>
+
+</body>
+</html>
+
+
+
+<!-- Creare con il solo Vanilla js un elemento h1 che contiene la scritta "HelloWorld"
+un input field elemento per inserire un testo e un button che disabilita fa funzione
+il button contiene il testo "Great"
+il button deve essere associato un event listner che al click riprenda
+il testo inserito nel field e consente un div aggiunto dinaticamente -->

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="my-element">
+    This is my content..
+</div>
+<div id="my-element-2">
+    This is my content..
+</div>
+<script>
+    const elem = document.getElementById("my-element");
+
+// ritarda di un secondo il cambio di scritta con intervallo (sono function)
+    setTimeout(() => {
+        const elem2 = document.getElementById("my-element-2");
+        elem2.innerHTML = "prova";
+    },1500)
+    setTimeout(() => {
+        let i = 0;
+        const interval1 = setInterval(() => {
+            elem.innerHTML = "<h1>" + "HelloWorld!" + i + "</h1>";
+            i++;
+        },500);
+        clearInterval(interval1);
+     },1000);
+
+console.log(elem)
+
+</script>
+</body>
+</html>

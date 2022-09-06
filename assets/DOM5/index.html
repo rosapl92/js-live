@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM-5 Esercizio Form</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+          crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Esercizio Form JS</h1>
+    </header>
+    <main>
+        <div class="row align-items-start">
+            <div class="col">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Inserisci Nuova Persona</h5>
+                        <form>
+                            <label for="Nome" class="require-field mb-1">Nome</label>
+                                <input type="text" class="form-control" name="Nome" placeholder="Nome" id="Nome" required>
+                            <label for="Età" class="require-field mb-1 mt-4">Età</label>
+                                <input type="number" class="form-control" name="Età" placeholder="Età" id="Età" required>
+                            <label for="Città" class="require-field mb-1 mt-4">Città</label>
+                            <input type="text" class="form-control" name="Città" placeholder="Città" id="Città" required>
+                            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Seleziona la persona dal compleanno</h5>
+                        <form>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Persone</h5>
+                        <ul id="persons-list" class="list-group">
+                            <li class="list-group-item d-flex">
+                                <div>Klaus</div>
+                                <div class="ms-auto">40 anni</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Sono il Footer</p>
+    </footer>
+</div>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+<script>
+    class Person {
+        constructor(name, age, city = "") {
+            this.name = name;
+            this.age = age;
+            this.city = city;
+        }
+    }
+</script>
+<script>
+    const persons = [
+        new Person("Klaus", 40),
+        new Person("Giovanni", 26, "NY"),
+        new Person("Maria", 34),
+        new Person("Claudio", 48, "Lesmo"),
+    ]
+</script>
+<script>
+    function populatePersonsList(persons) {
+        const ul = document.getElementById("persons-list");
+        if (persons instanceof Array){
+            const ps = persons.sort((a, b) => a.age - b.age ).map((p) => {
+
+                if (p instanceof Person) {
+
+                    let s = "";
+
+                    s += '<li class ="list-group-item d-flex">';
+                    s += '<div>' + p.name;
+                    if (p.city.length > 0){
+                    s += ' (' + p.city + ')'};
+                    s += '</div>';
+                    s += '<div class ="ms-auto">' + p.age + 'anni</div>';
+                    s += '</li>';
+
+                    return s;
+                }
+
+            }).join("");
+
+            ul.innerHTML = ps;
+
+        }
+
+    }
+</script>
+<script>
+    populatePersonsList(persons)
+</script>
+<script>
+    const personCreateForm = document.forms.item(0);
+    personCreateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const form = e.target;
+
+        const nome = form.elements[0].value;
+        const city = form.elements[2].value;
+        const age = form.elements[1].value;
+        const person = new Person(nome, age, city);
+        console.log(person)
+
+        persons.push(person);
+        populatePersonsList(persons);
+
+        form.reset();
+    })
+</script>
+</body>
+</html>

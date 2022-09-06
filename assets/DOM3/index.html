@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leczione32</title>
+</head>
+<body>
+<h1>Things to do.</h1>
+<ol id="toDoList">
+    <li class="important" about="somefing">Mow the lawn</li>
+    <li>Clean the Windows</li>
+    <li class="important">Answer your email</li>
+</ol>
+<p id="toDoNotes">Make sure all these are game on TV!</p>
+<script>
+    (function () {
+        const olElement = document.getElementById("toDoList");
+        //Si può fare in questo modo (conto elementi)
+      //  let count = 0;
+        //olElement.childNodes.forEach(node => {
+          //  if (node.nodeType === 1){
+            //    count++;
+           // }
+          // });
+       const elements = [];
+       olElement.childNodes.forEach(node => {
+           if (node.nodeType === 1){
+               elements.push(node);
+           }
+       })
+
+        // ottieni il primo elemento dopo il node
+        var firstnode = elements[1];
+       console.log(firstnode)
+        console.log(olElement.childNodes[1].nodeName)
+        console.log(olElement.childNodes[2].nodeName)
+
+        //alert("the ordered list contains " + count + " items.")
+        console.log(olElement.firstChild)
+
+        // ottiene tutti gli elementi che sono corrispondenti al tag li
+        const listElements = document.getElementsByTagName("li");
+       console.log(listElements)
+        console.log(listElements.item(1))
+
+        // ottieni tutte gli elementi che sono corrispondenti alla classe
+        const classElement = document.getElementsByClassName("important");
+        console.log(classElement)
+
+        // ottieni tutti gli elementi che hanno quell'attributo
+        const element = classElement.item(0);
+        const attributeElement = element.getAttribute("about");
+        console.log(attributeElement)
+
+        // cerchi con query
+        const el = document.querySelectorAll("li.important");
+        console.log(el)
+
+        // creare ed aggiungere elementi e contenuto
+        const createElement = document.createElement("li"); // crea l'elemento
+        createElement.innerHTML = "Some text"; // crea il testo
+        olElement.appendChild(createElement); //lo aggiunge al HTML
+        console.log(createElement)
+
+        // creare ed aggiungere nodi di testo
+        const createdTextNode = document.createTextNode("Something!");
+        const p = document.querySelector("p#toDoNotes");
+        p.appendChild(createdTextNode);
+        console.log(createdTextNode)
+
+        //clonare un nodo
+        const clone = createdTextNode.cloneNode(true);
+        p.appendChild(clone);
+        console.log(clone)
+
+        //clonare un nodo con i figli
+        const list = olElement.cloneNode(true);
+        const body = document.querySelector("body")
+        body.prepend(list);
+        console.log(list)
+
+        cloneList(olElement, 5)
+    })();
+    
+    function cloneList(olElement, times) {
+        const body = document.querySelector("body");
+        for (let i = 0; i < times; i++) {
+            const list = olElement.cloneNode(true);
+            body.prepend(list);
+            console.log(list)
+        }
+    }
+    
+</script>
+</body>
+</html>
