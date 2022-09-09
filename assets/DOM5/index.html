@@ -40,7 +40,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Seleziona la persona dal compleanno</h5>
                         <form>
-
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option selected>---</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary mt-4">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -79,12 +82,34 @@
     }
 </script>
 <script>
-    const persons = [
+   /* const persons = [
         new Person("Klaus", 40),
         new Person("Giovanni", 26, "NY"),
         new Person("Maria", 34),
         new Person("Claudio", 48, "Lesmo"),
-    ]
+    ]*/
+   const persons =  {
+           list: [
+                      new Person("Klaus", 40),
+                      new Person("Giovanni", 26, "NY"),
+                      new Person("Maria", 34),
+                      new Person("Claudio", 48, "Lesmo"),
+                  ],
+
+           listupdate: new Event("listbuterdate", {
+               bubbles: true
+           }),
+
+           addItemList: function (item) {
+               this.list.push(item);
+               document.dispatchEvent(this.listupdate)
+
+           }
+
+   }
+
+   //const persons = new Person();
+
 </script>
 <script>
     function populatePersonsList(persons) {
@@ -101,7 +126,7 @@
                     if (p.city.length > 0){
                     s += ' (' + p.city + ')'};
                     s += '</div>';
-                    s += '<div class ="ms-auto">' + p.age + 'anni</div>';
+                    s += '<div class ="ms-auto">' + p.age + ' anni</div>';
                     s += '</li>';
 
                     return s;
@@ -114,9 +139,28 @@
         }
 
     }
+
+    function populateOption(persons) {
+        if (persons instanceof Array){
+            const form = document.forms.item(1);
+            const select = form.elements[0];
+            const newOprions = persons
+                .filter(p => p instanceof Person)
+                .sort((a, b) => a.age - b.age)
+                .map((p, index) => new Option(p.name, index.toString()));
+            const firstchild = [select.children[0]];
+            const t = firstchild.concat(newOprions);
+            select.innerHTML = ""; // svuota semplice
+            t.forEach(i => {
+                select.append(i);
+            })
+        }
+    }
 </script>
 <script>
-    populatePersonsList(persons)
+    populatePersonsList(persons.list);
+   // populatePersonsList(persons)
+    populateOption(persons.list);
 </script>
 <script>
     const personCreateForm = document.forms.item(0);
@@ -131,11 +175,35 @@
         const person = new Person(nome, age, city);
         console.log(person)
 
-        persons.push(person);
-        populatePersonsList(persons);
+        persons.addItemList(person);
+        //persons.push(person);
+        //populatePersonsList(persons);
 
         form.reset();
     })
+
+    birthDay = document.forms[1];
+    birthDay.addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const selectedPersonName = e.target.elements[0].value;
+        const selectedPerson = persons.list
+            .filter(p => p instanceof Person)
+            .sort((a, b) => a.age - b.age)[selectedPersonName];
+        if (selectedPerson instanceof Person){
+            selectedPerson.age ++;
+            document.dispatchEvent(new Event("listbuterdate", {
+                bubbles: true
+            }));
+
+        }
+
+    })
+    document.addEventListener("listbuterdate", () => {
+        populatePersonsList(persons.list);
+        populateOption(persons.list);
+    })
+
 </script>
 </body>
 </html>
