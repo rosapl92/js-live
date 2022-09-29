@@ -112,30 +112,26 @@
 
 </script>
 <script>
+
+
     function populatePersonsList(persons) {
-        const ul = document.getElementById("persons-list");
+
+        function ToListItem({name, city, age}) {
+            return `<li class ="list-group-item d-flex">
+                      <div>
+                       ${name} ${(city.length > 0) ? `(${city})` : ''}
+                       </div>
+                       <div class ="ms-auto"> ${age}  anni</div>
+                 </li>`;
+        }
+
         if (persons instanceof Array){
-            const ps = persons.sort((a, b) => a.age - b.age ).map((p) => {
-
-                if (p instanceof Person) {
-
-                    let s = "";
-
-                    s += '<li class ="list-group-item d-flex">';
-                    s += '<div>' + p.name;
-                    if (p.city.length > 0){
-                    s += ' (' + p.city + ')'};
-                    s += '</div>';
-                    s += '<div class ="ms-auto">' + p.age + ' anni</div>';
-                    s += '</li>';
-
-                    return s;
-                }
-
-            }).join("");
-
-            ul.innerHTML = ps;
-
+        const ul = document.getElementById("persons-list");
+            ul.innerHTML = persons
+                .filter(p => p instanceof Person)
+                .sort((a, b) => a.age - b.age )
+                .map(ToListItem)
+                .join("");
         }
 
     }

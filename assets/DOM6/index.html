@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grating form</title>
+</head>
+<body>
+
+
+
+<script>
+const body = document.querySelector("body");
+const form = document.createElement("form");
+
+const h1 = getHeading();
+
+const buttonGreet = getGeedButton();
+
+const inputElementText = getInputElement();
+
+body.prepend(h1);
+
+const label = inputElementText.labelElement;
+h1.insertAdjacentElement('afterend', form);
+form.insertAdjacentElement('afterbegin', label);
+label.insertAdjacentElement('afterend', inputElementText.inputElement);
+inputElementText.inputElement.insertAdjacentElement('afterend', buttonGreet);
+
+const divElement = document.createElement("div");
+form.insertAdjacentElement("afterend", divElement);
+
+const nameForm = document.forms.item(0);
+const nameArray = [];
+
+inputElementText.inputElement.addEventListener('input', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    buttonGreet.disabled = !e.target.value;
+})
+nameForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    divElement.innerHTML = e.target.elements.item(0).value;
+
+    e.target.reset();
+})
+
+
+
+function getHeading() {
+    const h1 = document.createElement("h1");
+    h1.innerHTML = "Hello World!";
+    return h1;
+}
+
+function getGeedButton() {
+    const button = document.createElement("button");
+    button.setAttribute('type', 'submit');
+    //button.disabled = true;
+    button.innerHTML = "greet";
+    return button;
+}
+
+function getInputElement() {
+    const eleName = "name";
+    const inputElement = document.createElement("input");
+    const labelElement = document.createElement("label");
+
+    labelElement.setAttribute('for', eleName);
+    labelElement.innerHTML = 'Nome';
+
+    inputElement.setAttribute('type', 'text');
+    inputElement.setAttribute("name", eleName);
+    inputElement.setAttribute('placeholder', 'Nome');
+    inputElement.setAttribute('id', eleName);
+    return {
+        labelElement: labelElement, inputElement: inputElement
+    };
+}
+
+
+</script>
+<script>
+    //Function rest-parameter
+    function somma(... operands) {
+       return  operands
+           .filter(i => typeof i === 'number')
+           .reduce((c,p) => c + p);
+    }
+// Object Array destructuring
+    const arr =[1, 3, 5, 7]
+    const [a,b, ... resto] = arr
+
+    const obj = { a1: 2, b1: 4, c: 6, d: 8};
+    const {a1, b1,...via} = obj;
+</script>
+</body>
+</html>
