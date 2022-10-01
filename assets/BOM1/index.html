@@ -29,9 +29,13 @@
         crossorigin="anonymous"></script>
 
 <script>
-const textArea = document.querySelector("textarea");
+const textArea = document.getElementById("copy-text");
 const button = document.querySelector("button");
 const form = document.forms.item(0);
+
+button.addEventListener('click', (e) => {
+    console.log('button cliccato');
+})
 
 /*
 form.addEventListener('pointerdown', (e) => {
@@ -45,6 +49,18 @@ form.addEventListener('pointerdown', (e) => {
 
 form.addEventListener('submit', (e) => {
     console.log("form cliccato..." );
+
+    navigator.geolocation.getCurrentPosition((s) => {
+        console.log(s);
+    })
+
+    if (e.target instanceof HTMLFormElement){
+        const textArea = e.target.elements[0];
+        if (textArea instanceof HTMLTextAreaElement){
+        console.log(textArea.value);
+        navigator.clipboard.writeText(textArea.value);
+        }}
+    const textAreaValue =
     e.preventDefault();
     e.stopPropagation();
 })
