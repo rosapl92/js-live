@@ -35,6 +35,10 @@ const form = document.forms.item(0);
 
 button.addEventListener('click', (e) => {
     console.log('button cliccato');
+    if (textArea instanceof HTMLTextAreaElement){
+        console.log(textArea.value);
+        navigator.clipboard.writeText(textArea.value);
+    }
 })
 
 /*
@@ -46,7 +50,7 @@ form.addEventListener('pointerdown', (e) => {
     form.requestSubmit();
 })
  */
-
+/*
 form.addEventListener('submit', (e) => {
     console.log("form cliccato..." );
 
@@ -63,6 +67,13 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     e.stopPropagation();
 })
+ */
+
+const citta = ['Lecco', 'Oggiono', 'Dolzago'];
+const provincia = [... citta, 'Annone', 'Molteno'];
+console.log(provincia);
+
+
 </script>
 </body>
 </html>
