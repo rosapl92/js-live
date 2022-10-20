@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promises Esercizio 1</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+          crossorigin="anonymous">
+    <style>
+        .exercise-display{
+            background-color: aquamarine;
+            border: 1px solid aqua;
+            padding: 10px;
+            overflow: hidden;
+            }
+        p {
+           /* margin-bottom: 0;*/
+            margin: unset;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="exercise-display my-3">
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+<script>
+    const image = 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Eagle_nebula_pillars.jpg'
+
+    const promise = fetch(image);
+    console.log(promise);
+
+    const LoadingEffect = function (elmDisplay, operation) {
+        const p = document.createElement("p");
+        p.setAttribute("class", "loading-effect");
+        p.innerHTML = `Attendere ${operation} in corso`;
+
+        this.stat = () => {
+            elmDisplay.append(p);
+            this.interval = setInterval( () => {
+                p.innerHTML += ".";
+            }, 10);
+        }
+        this.unset = () => {
+            elmDisplay.removeChild(p);
+            clearInterval(this.interval);
+        }
+
+    } // function anonima che è diventata un oggetto
+
+    const div = document.querySelector(".exercise-display");
+
+    const loadingEffect1 = new LoadingEffect(div, 'scaricamento');
+    const blobLoadingEffect = new LoadingEffect(div, 'lettura');
+
+    loadingEffect1.stat();
+
+    /*
+    setTimeout( () => {
+        loadingEffect.unset();
+    }, 1000)
+    solo per provare il funzionamento
+     */
+
+    // PROMISE
+    promise
+        .then((response) => {
+            console.log(response);
+            if (response.ok === false) { // oppure .status =≠= 200
+                throw new Error("Response is ko");
+            }
+
+            let p = document.createElement("p");
+            p.innerHTML = `http status code: ${response.ok}`;
+            div.append(p);
+
+            loadingEffect1.unset();
+
+            const blob = response.blob();
+
+            blobLoadingEffect.start();
+
+            return blob;
+
+
+    })
+        .then( (blob) => {
+            const imageObjectURL = URL.createObjectURL(blob);
+            const imageElement = document.createElement('img');
+            div.append(imageElement);
+            imageElement.src = imageObjectURL;
+
+            blobLoadingEffect.unset();
+        })
+        .catch( (error) => {
+            alert(error.message)
+        })
+        .finally( () => {
+        loadingEffect.unset()
+    });
+
+
+
+</script>
+
+</body>
+</html>
