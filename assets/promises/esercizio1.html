@@ -39,12 +39,13 @@
     const promise = fetch(image);
     console.log(promise);
 
-    const LoadingEffect = function (elmDisplay, operation) {
+    const LoadingEffect = function(elmDisplay, operation) {
+
         const p = document.createElement("p");
         p.setAttribute("class", "loading-effect");
-        p.innerHTML = `Attendere ${operation} in corso`;
+        p.innerHTML = `Attendere ${operation} `;
 
-        this.stat = () => {
+        this.start = () => {
             elmDisplay.append(p);
             this.interval = setInterval( () => {
                 p.innerHTML += ".";
@@ -59,10 +60,10 @@
 
     const div = document.querySelector(".exercise-display");
 
-    const loadingEffect1 = new LoadingEffect(div, 'scaricamento');
-    const blobLoadingEffect = new LoadingEffect(div, 'lettura');
+    const loadingEffect1 = new LoadingEffect(div, 'scaricamento in corso');
+    const blobLoadingEffect = new LoadingEffect(div, 'lettura in corso');
 
-    loadingEffect1.stat();
+    loadingEffect1.start();
 
     /*
     setTimeout( () => {
@@ -87,7 +88,7 @@
 
             const blob = response.blob();
 
-            blobLoadingEffect.start();
+            //blobLoadingEffect.start();
 
             return blob;
 
@@ -99,13 +100,13 @@
             div.append(imageElement);
             imageElement.src = imageObjectURL;
 
-            blobLoadingEffect.unset();
+            //blobLoadingEffect.unset();
         })
         .catch( (error) => {
             alert(error.message)
         })
         .finally( () => {
-        loadingEffect.unset()
+        //loadingEffect1.unset()
     });
 
 
